@@ -10,89 +10,80 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("title"),
+        backgroundColor: Colors.green,
+      ),
       drawer: Drawer(
-        // child: Container(
-        //   color: Colors.blue,
-        //   child: ListView(
-        //     children: [
-        //       SizedBox(
-        //         height: 200,
-        //         width: 100,
-        //         child: DrawerHeader(
-        //           padding: const EdgeInsets.all(0.0),
-        //           child: Container(
-        //             decoration: BoxDecoration(color: Colors.orange[50]),
-        //             child: const Center(
-        //               child: Column(
-        //                 mainAxisAlignment: MainAxisAlignment.center,
-        //                 children: [
-        //                    Icon(
-        //                     Icons.account_circle_outlined,
-        //                     size: 100,
-        //                     color: Colors.black,
-        //                   ),
-        //                   Text(
-        //                       "Welcome",
-        //                       style: TextStyle(
-        //                           fontSize: 24, color: Colors.white))
-        //                 ],
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //       // HOME
-        //       ListTile(
-        //         contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-        //         leading: Icon(
-        //           Icons.home_rounded,
-        //           color: Colors.orange[50],
-        //           size: 40,
-        //         ),
-        //         title: Text("Home",
-        //             style: TextStyle(fontSize: 25, color: Colors.orange[50])),
-        //         onTap: () {
-        //           Navigator.of(context).push(MaterialPageRoute(
-        //               builder: (context) => const HomePage()));
-        //         },
-        //       ),
-        //       // PROFILE
-        //       ListTile(
-        //         contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-        //         leading: Icon(
-        //           Icons.account_circle_outlined,
-        //           color: Colors.orange[200]?.withOpacity(0.5),
-        //           size: 40,
-        //         ),
-        //         title: Text("Profile",
-        //             style: TextStyle(
-        //                 fontSize: 25, color: Colors.orange[200]?.withOpacity(0.5))),
-        //         onTap: () {
-        //           Navigator.of(context).push(MaterialPageRoute(
-        //               builder: (context) => const HomePage()));
-        //         },
-        //       ),
-        //       // STORE
-        //       ListTile(
-        //         contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-        //         leading: Icon(
-        //           Icons.shopping_bag_outlined,
-        //           color: Colors.orange[200]?.withOpacity(0.5),
-        //           size: 40,
-        //         ),
-        //         title: Text("Store",
-        //             style: TextStyle(
-        //                 fontSize: 25, color: Colors.orange[200]?.withOpacity(0.5))),
-        //         onTap: () {
-        //           Navigator.of(context).push(MaterialPageRoute(
-        //               builder: (context) => const HomePage()));
-        //         },
-        //       ),
-        //     ],
-        //   ),
-        // ),
-      
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ), //BoxDecoration
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.green),
+                accountName: Text(
+                  "Abhishek Mishra",
+                  style: TextStyle(fontSize: 18),
+                ),
+                accountEmail: Text("abhishekm977@gmail.com"),
+                currentAccountPictureSize: Size.square(50),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 165, 255, 137),
+                  child: Text(
+                    "A",
+                    style: TextStyle(fontSize: 30.0, color: Colors.blue),
+                  ), //Text
+                ), //circleAvatar
+              ), //UserAccountDrawerHeader
+            ), //DrawerHeader
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text(' My Profile '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.book),
+              title: const Text(' My Course '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.workspace_premium),
+              title: const Text(' Go Premium '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.video_label),
+              title: const Text(' Saved Videos '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.edit),
+              title: const Text(' Edit Profile '),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('LogOut'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(child: Text("< H O M E    P A G E>")),
     );

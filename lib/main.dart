@@ -21,15 +21,15 @@ class _MainAppState extends State<MainApp> {
       debugShowCheckedModeBanner: false,
 
       // Theme
-      theme: ThemeData(
-        // Tema config
-        // colorScheme: ,
+      // theme: ThemeData(
+      //   // Tema config
+      //   // colorScheme: ,
 
-        // Font config
-        textTheme: GoogleFonts.montserratTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
+      //   // Font config
+      //   textTheme: GoogleFonts.montserratTextTheme(
+      //     Theme.of(context).textTheme,
+      //   ),
+      // ),
       
       // Home
       home: const Scaffold(
