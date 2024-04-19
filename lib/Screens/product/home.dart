@@ -12,34 +12,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("title"),
-        backgroundColor: Colors.green,
+        iconTheme: const IconThemeData(
+          size: 32
+        ),
+        backgroundColor: Colors.transparent
       ),
       drawer: Drawer(
         child: ListView(
           padding: const EdgeInsets.all(0),
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.green,
-              ), //BoxDecoration
-              child: UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.green),
-                accountName: Text(
-                  "Abhishek Mishra",
-                  style: TextStyle(fontSize: 18),
-                ),
-                accountEmail: Text("abhishekm977@gmail.com"),
-                currentAccountPictureSize: Size.square(50),
-                currentAccountPicture: CircleAvatar(
-                  backgroundColor: Color.fromARGB(255, 165, 255, 137),
-                  child: Text(
-                    "A",
-                    style: TextStyle(fontSize: 30.0, color: Colors.blue),
-                  ), //Text
-                ), //circleAvatar
-              ), //UserAccountDrawerHeader
-            ), //DrawerHeader
+                color: Colors.orange[100],
+              ),
+              child: const Center(child: Text("Welcome Back", style: TextStyle(fontSize: 20) ,)),
+            ),
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text(' My Profile '),
@@ -69,15 +56,15 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.edit),
-              title: const Text(' Edit Profile '),
+              leading: const Icon(Icons.settings),
+              title: const Text(' Settings '),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text('LogOut'),
+              title: const Text(' LogOut '),
               onTap: () {
                 Navigator.pop(context);
               },
