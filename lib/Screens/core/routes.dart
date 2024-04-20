@@ -5,6 +5,7 @@ import 'package:midterm_project/Screens/client/sign_in.dart';
 import 'package:midterm_project/Screens/client/sign_up.dart';
 import 'package:midterm_project/Screens/client/welcome.dart';
 import 'package:midterm_project/Screens/core/error.dart';
+import 'package:midterm_project/Screens/core/loader.dart';
 import 'package:midterm_project/Screens/core/settings.dart';
 import 'package:midterm_project/Screens/product/address.dart';
 import 'package:midterm_project/Screens/product/cart.dart';
@@ -20,6 +21,10 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      builder: (context, state) => const LoadPage(),
+    ),
+    GoRoute(
+      path: '/home',
       builder: (context, state) => const HomePage(),
     ),
     GoRoute(
