@@ -9,11 +9,14 @@ import 'package:midterm_project/Screens/core/loader.dart';
 import 'package:midterm_project/Screens/core/settings.dart';
 import 'package:midterm_project/Screens/product/address.dart';
 import 'package:midterm_project/Screens/product/cart.dart';
+import 'package:midterm_project/Screens/product/fovorites.dart';
 import 'package:midterm_project/Screens/product/home.dart';
 import 'package:midterm_project/Screens/product/order_complete.dart';
 import 'package:midterm_project/Screens/product/order_details.dart';
 import 'package:midterm_project/Screens/product/payment.dart';
 import 'package:midterm_project/Screens/product/search.dart';
+
+import '../product/previous_orders.dart';
 
 // GoRouter configuration
 final router = GoRouter(
@@ -74,6 +77,14 @@ final router = GoRouter(
     GoRoute(
       path: '/search',
       builder: (context, state) => const SearchPage(),
+    ),
+    GoRoute(
+      path: '/previousorders',
+      builder: (context, state) => const PreviousOrders(),
+    ),
+    GoRoute(
+      path: '/favorites',
+      builder: (context, state) => const Favorites(),
     ),
   ],
 );
