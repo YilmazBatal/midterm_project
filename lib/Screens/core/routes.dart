@@ -4,6 +4,7 @@ import 'package:midterm_project/Screens/client/reset_password.dart';
 import 'package:midterm_project/Screens/client/sign_in.dart';
 import 'package:midterm_project/Screens/client/sign_up.dart';
 import 'package:midterm_project/Screens/client/welcome.dart';
+import 'package:midterm_project/Screens/core/error.dart';
 import 'package:midterm_project/Screens/core/settings.dart';
 import 'package:midterm_project/Screens/product/address.dart';
 import 'package:midterm_project/Screens/product/cart.dart';
@@ -15,6 +16,7 @@ import 'package:midterm_project/Screens/product/search.dart';
 
 // GoRouter configuration
 final router = GoRouter(
+  errorBuilder: (context, state) => const ErrorPage(),
   routes: [
     GoRoute(
       path: '/',
