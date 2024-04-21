@@ -23,4 +23,9 @@ class Storage {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.setBool("launched", true);
   }
+
+  storageClear() async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+    await storage.clear();
+  }
 }
