@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import 'bottom_menu.dart';
-import 'cart.dart';
+import '../widgets/bottom_menu.dart';
 import 'product_card.dart';
 
 class HomePage extends StatefulWidget {
