@@ -25,7 +25,9 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).push("/orderdetails"),
+      onTap: () {
+        GoRouter.of(context).push("/orderdetails");
+      },
       child: Card(
         margin: const EdgeInsets.all(15),
         elevation: 4,

@@ -15,7 +15,7 @@ class _LoadPageState extends State<LoadPage> {
  
   loadApp() async {
     final storage = Storage();
-    // storage.storageClear();
+    storage.storageClear();
     final firstLaunch = await storage.isFirstLaunch();
 
     if (firstLaunch) {

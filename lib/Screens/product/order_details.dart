@@ -9,6 +9,11 @@ class OrderDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Order Detail"),
       ),
+      body: Column(
+        children: [
+          Text("data"),
+        ],
+      ),
     );
   }
 }
