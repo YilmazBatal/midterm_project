@@ -40,7 +40,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/signup',
-      builder: (context, state) => const SignUpPage(),
+      builder: (context, state) => SignUpPage(),
     ),
     GoRoute(
       path: '/resetpassword',

@@ -42,7 +42,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 storage.firstLaunched();
                 await storage.firstLaunched();
                 // ignore: use_build_context_synchronously
-                GoRouter.of(context).replace("/home");
+                GoRouter.of(context).replace("/signin");
               },
               child: page == 2 ? const Text("Done") : const Text("Skip"),
             ),

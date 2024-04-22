@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/bottom_menu.dart';
 import 'product_card.dart';
 
@@ -14,19 +15,22 @@ class _HomePageState extends State<HomePage> {
   // ignore: unused_field
   final _productsList = [
     {
-      "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx9DY6c2ri7CHo47p_4HnS2ttME0tuyvB-WNlQSxI1oZVhphYfvPAZfbnG8XVd_2a_uts&usqp=CAU",
-      "title" : "Glasses",
-      "price" : "19.99",
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx9DY6c2ri7CHo47p_4HnS2ttME0tuyvB-WNlQSxI1oZVhphYfvPAZfbnG8XVd_2a_uts&usqp=CAU",
+      "title": "Glasses",
+      "price": "19.99",
     },
     {
-      "image" : "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
-      "title" : "T-shirt",
-      "price" : "9.99",
+      "image":
+          "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+      "title": "T-shirt",
+      "price": "9.99",
     },
     {
-      "image" : "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
-      "title" : "T-shirt ",
-      "price" : "9.99",
+      "image":
+          "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+      "title": "T-shirt ",
+      "price": "9.99",
     },
   ];
 
@@ -102,9 +106,12 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text(' LogOut '),
-              onTap: () {
-                GoRouter.of(context).push("/not-in-design");
+              title: const Text('Log Out'),
+              onTap: () async {
+                await clearSharedPreferences();
+                // Anasayfaya geri dön go routerda çalışmıyormuş
+                // ignore: use_build_context_synchronously
+                Navigator.of(context).popUntil(ModalRoute.withName('/signin'));
               },
             ),
           ],
@@ -114,9 +121,7 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.only(left: 25.0, right: 25, bottom: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             const Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -216,12 +221,11 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: _productsList.length,
-                itemBuilder:(context, index) {
+                itemBuilder: (context, index) {
                   return ProductCard(
-                    imageUrl: _productsList[index]["image"]!,
-                    title: _productsList[index]["title"]!,
-                    price: _productsList[index]["price"]!
-                  );
+                      imageUrl: _productsList[index]["image"]!,
+                      title: _productsList[index]["title"]!,
+                      price: _productsList[index]["price"]!);
                 },
               ),
             ),
@@ -270,5 +274,10 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Future<void> clearSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
   }
 }
