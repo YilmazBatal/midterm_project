@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/bottom_menu.dart';
 import 'product_card.dart';
 
@@ -46,45 +47,45 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text(' My Profile '),
+              leading: const Icon(Icons.home),
+              title: const Text(' Home '),
               onTap: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push("/Home");
               },
             ),
             ListTile(
-              leading: const Icon(Icons.book),
-              title: const Text(' My Course '),
+              leading: const Icon(Icons.person),
+              title: const Text(' Profile '),
               onTap: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push("/not-in-design");
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.favorite),
+              title: const Text(' Favorites '),
+              onTap: () {
+                GoRouter.of(context).push("/not-in-design");
               },
             ),
             ListTile(
               leading: const Icon(Icons.workspace_premium),
               title: const Text(' Go Premium '),
               onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.video_label),
-              title: const Text(' Saved Videos '),
-              onTap: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push("/not-in-design");
               },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text(' Settings '),
               onTap: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push("/settings");
               },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text(' LogOut '),
               onTap: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push("/not-in-design");
               },
             ),
           ],
@@ -97,28 +98,26 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-            Container(
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(fontSize: 30),
-                    textAlign: TextAlign.start,
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    "<NAME>",
-                    style: TextStyle(fontSize: 30),
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Welcome",
+                  style: TextStyle(fontSize: 30),
+                  textAlign: TextAlign.start,
+                ),
+                SizedBox(height: 5),
+                Text(
+                  "<NAME>",
+                  style: TextStyle(fontSize: 30),
+                  textAlign: TextAlign.start,
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Row(
               children: [
-                Container(
+                SizedBox(
                   width: 280,
                   height: 50,
                   child: Expanded(
@@ -193,7 +192,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // const SizedBox(height: 5),
-            Container(
+            SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -224,7 +223,7 @@ class _HomePageState extends State<HomePage> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomMenu(),
+      bottomNavigationBar: const BottomMenu(),
     );
   }
 
