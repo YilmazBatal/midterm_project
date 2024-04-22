@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:midterm_project/Screens/product/cart.dart';
-import 'package:midterm_project/Screens/product/home.dart';
 
 class BottomMenu extends StatefulWidget {
-  const BottomMenu({Key? key}) : super(key: key);
+  const BottomMenu({super.key});
 
   @override
   State<BottomMenu> createState() => _BottomMenuState();
 }
 
 class _BottomMenuState extends State<BottomMenu> {
+  // ignore: unused_field
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index) {
+    void onItemTapped(int index) {
       setState(() {
         _selectedIndex = index;
       });
@@ -70,7 +69,7 @@ class _BottomMenuState extends State<BottomMenu> {
             ),
             label: ""),
       ],
-      onTap: _onItemTapped,
+      onTap: onItemTapped,
     );
   }
 }

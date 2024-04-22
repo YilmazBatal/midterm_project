@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Product_Card extends StatelessWidget {
-  const Product_Card({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
 class ProductCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String price;
 
   const ProductCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.price,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       elevation: 4,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -81,26 +72,28 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Product Card Example'),
-        ),
-        body: const Center(
-          child: ProductCard(
-            imageUrl: 'https://via.placeholder.com/200x150',
-            title: 'Product Title',
-            price: '19.99',
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Product Card Example'),
+//         ),
+//         body: const Center(
+//           child: ProductCard(
+//             imageUrl: 'https://via.placeholder.com/200x150',
+//             title: 'Product Title',
+//             price: '19.99',
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

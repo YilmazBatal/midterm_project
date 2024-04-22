@@ -20,7 +20,7 @@ class SettingsPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text("< S E T T I N G S>"),
       ),
     );
