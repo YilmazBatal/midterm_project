@@ -11,6 +11,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // ignore: unused_field
+  final _productsList = [
+    {
+      "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx9DY6c2ri7CHo47p_4HnS2ttME0tuyvB-WNlQSxI1oZVhphYfvPAZfbnG8XVd_2a_uts&usqp=CAU",
+      "title" : "Glasses",
+      "price" : "19.99",
+    },
+    {
+      "image" : "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+      "title" : "T-shirt",
+      "price" : "9.99",
+    },
+    {
+      "image" : "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+      "title" : "T-shirt ",
+      "price" : "9.99",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,30 +213,16 @@ class _HomePageState extends State<HomePage> {
             // const SizedBox(height: 5),
             SizedBox(
               height: 200,
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  ProductCard(
-                    imageUrl: 'https://via.placeholder.com/200x120',
-                    title: 'Product Title',
-                    price: '19.99',
-                  ),
-                  ProductCard(
-                    imageUrl: 'https://via.placeholder.com/200x120',
-                    title: 'Product Title',
-                    price: '19.99',
-                  ),
-                  ProductCard(
-                    imageUrl: 'https://via.placeholder.com/200x120',
-                    title: 'Product Title',
-                    price: '19.99',
-                  ),
-                  ProductCard(
-                    imageUrl: 'https://via.placeholder.com/200x120',
-                    title: 'Product Title',
-                    price: '19.99',
-                  ),
-                ],
+                itemCount: _productsList.length,
+                itemBuilder:(context, index) {
+                  return ProductCard(
+                    imageUrl: _productsList[index]["image"]!,
+                    title: _productsList[index]["title"]!,
+                    price: _productsList[index]["price"]!
+                  );
+                },
               ),
             ),
           ]),

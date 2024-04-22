@@ -5,7 +5,7 @@ class Storage {
     final SharedPreferences storage = await SharedPreferences.getInstance();
 
     final launched = storage.getBool("launched");
-
+    
     var counter = storage.getInt("launchCount");
 
     if (launched == null) {
