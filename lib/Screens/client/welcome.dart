@@ -16,15 +16,15 @@ class _WelcomePageState extends State<WelcomePage> {
 
   final boardingData = [
     {
-      "image" : "https://as2.ftcdn.net/v2/jpg/03/34/71/91/1000_F_334719175_TyyB17yH8BYqAqC2cFBMWyqrTMRfbtkv.jpg",
+      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356877.png",
       "title" : "NEW WINTER 2024 COLLECTION IS OUT!"
     },
     {
-      "image" : "https://media.istockphoto.com/id/1426599943/vector/young-stylish-woman-choosing-new-fashioned-clothes-in-store-girl-buying-garment-stand-near.jpg?s=612x612&w=0&k=20&c=L-s0XuOc4WPCw7e4YhG86ook5MpiiuMJS8cTshhV6eA=",
+      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356885.png",
       "title": "TRY OUR SUMMER 2023 OUTLET COLLECTION NOW!"
     },
     {
-      "image" : "https://us.123rf.com/450wm/infernostudio/infernostudio2306/infernostudio230602720/206349250-fashion-flat-design.jpg?ver=6",
+      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356883.png",
       "title": "LOREM IPSUM DOLAR SIT AMET!!"
     },
   ];
