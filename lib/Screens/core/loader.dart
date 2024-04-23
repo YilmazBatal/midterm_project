@@ -15,7 +15,7 @@ class _LoadPageState extends State<LoadPage> {
  
   loadApp() async {
     final storage = Storage();
-    storage.storageClear();
+    // storage.storageClear();
     final firstLaunch = await storage.isFirstLaunch();
 
     if (firstLaunch) {
@@ -23,7 +23,7 @@ class _LoadPageState extends State<LoadPage> {
       GoRouter.of(context).replace("/welcome");
     } else {
       // home screen
-      GoRouter.of(context).replace("/home");
+      GoRouter.of(context).replace("/payment");
     }
   }
   
