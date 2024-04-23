@@ -12,9 +12,10 @@ import 'package:midterm_project/Screens/product/cart.dart';
 import 'package:midterm_project/Screens/product/fovorites.dart';
 import 'package:midterm_project/Screens/product/home.dart';
 import 'package:midterm_project/Screens/product/order_complete.dart';
-import 'package:midterm_project/Screens/product/order_details.dart';
 import 'package:midterm_project/Screens/product/payment.dart';
 import 'package:midterm_project/Screens/product/search.dart';
+import 'package:midterm_project/Screens/static/product1.dart';
+import 'package:midterm_project/Screens/static/product2.dart';
 
 import '../product/previous_orders.dart';
 
@@ -66,10 +67,10 @@ final router = GoRouter(
       path: '/ordercomplete',
       builder: (context, state) => const OrderCompletePage(),
     ),
-    GoRoute(
-      path: '/orderdetails',
-      builder: (context, state) => const OrderDetailsPage(),
-    ),
+    // GoRoute(
+    //   path: '/orderdetails',
+    //   builder: (context, state) => const OrderDetailsPage(),
+    // ),
     GoRoute(
       path: '/payment',
       builder: (context, state) => const PaymentPage(),
@@ -85,6 +86,14 @@ final router = GoRouter(
     GoRoute(
       path: '/favorites',
       builder: (context, state) => const Favorites(),
+    ),
+    GoRoute(
+      path: '/urun1',
+      builder: (context, state) => const Product1(),
+    ),
+    GoRoute(
+      path: '/urun2',
+      builder: (context, state) => const Product2(),
     ),
   ],
 );
