@@ -23,7 +23,7 @@ class _LoadPageState extends State<LoadPage> {
       GoRouter.of(context).replace("/welcome");
     } else {
       // home screen
-      GoRouter.of(context).replace("/payment");
+      GoRouter.of(context).replace("/home");
     }
   }
   
