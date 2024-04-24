@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:midterm_project/Screens/core/localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/bottom_menu.dart';
 import 'product_card.dart';
@@ -59,11 +60,11 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.orange[100],
               ),
-              child: const Row(
+              child: Row(
                 children: [
                   Text(
-                    "Welcome Back",
-                    style: TextStyle(fontSize: 20),
+                    AppLocalizations.of(context).getTranslate("welcome_back"),
+                    style: const TextStyle(fontSize: 20),
                     textAlign: TextAlign.left,
                   ),
                 ],
@@ -71,44 +72,46 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text(' Home '),
+              title: Text(AppLocalizations.of(context).getTranslate("home")),
               onTap: () {
                 GoRouter.of(context).push("/Home");
               },
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text(' Profile '),
+              title: Text(AppLocalizations.of(context).getTranslate("profile")),
               onTap: () {
                 GoRouter.of(context).push("/not-in-design");
               },
             ),
             ListTile(
               leading: const Icon(Icons.favorite),
-              title: const Text(' Favorites '),
+              title:
+                  Text(AppLocalizations.of(context).getTranslate("favorites")),
               onTap: () {
                 GoRouter.of(context).push("/not-in-design");
               },
             ),
             ListTile(
               leading: const Icon(Icons.workspace_premium),
-              title: const Text(' Go Premium '),
+              title: Text(AppLocalizations.of(context).getTranslate("premium")),
               onTap: () {
                 GoRouter.of(context).push("/not-in-design");
               },
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text(' Settings '),
+              title:
+                  Text(AppLocalizations.of(context).getTranslate("settings")),
               onTap: () {
                 GoRouter.of(context).push("/settings");
               },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text('Log Out'),
+              title: Text(AppLocalizations.of(context).getTranslate("logout")),
               onTap: () async {
-                await clearSharedPreferences();
+                // await clearSharedPreferences();
                 // Anasayfaya geri dön go routerda çalışmıyormuş
                 // ignore: use_build_context_synchronously
                 Navigator.of(context).popUntil(ModalRoute.withName('/signin'));
@@ -122,16 +125,17 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.only(left: 25.0, right: 25, bottom: 20),
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            const Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Welcome",
-                  style: TextStyle(fontSize: 30),
+                  AppLocalizations.of(context).getTranslate("welcome"),
+                  style: const TextStyle(fontSize: 30),
                   textAlign: TextAlign.start,
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   "<NAME>",
                   style: TextStyle(fontSize: 30),
                   textAlign: TextAlign.start,
@@ -148,7 +152,8 @@ class _HomePageState extends State<HomePage> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color.fromARGB(255, 250, 248, 248),
-                      hintText: 'Arama yapın...',
+                      hintText:
+                          AppLocalizations.of(context).getTranslate("search"),
                       prefixIcon: const Icon(
                         Icons.search,
                         color: Colors.grey,
@@ -193,7 +198,7 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Köşe yarıçapı
                 child: Image.network(
-                  "https://png.pngtree.com/png-clipart/20220117/original/pngtree-big-sale-up-to-70-off-black-friday-social-media-banner-png-image_7129084.png",
+                  "https://images-ext-1.discordapp.net/external/qubV6AwXaVN3SYiTZlQSqsaLDTmllHMXUTPg8NKcc-E/https/png.pngtree.com/png-clipart/20220117/original/pngtree-big-sale-up-to-70-off-black-friday-social-media-banner-png-image_7129084.png?format=webp&quality=lossless&width=671&height=671",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -206,9 +211,16 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    textButton("Accessories", "100"),
-                    textButton("Clothing", "245"),
-                    textButton("Shoes", "175"),
+                    textButton(
+                        AppLocalizations.of(context)
+                            .getTranslate("accessories"),
+                        "100"),
+                    textButton(
+                        AppLocalizations.of(context).getTranslate("clothing"),
+                        "245"),
+                    textButton(
+                        AppLocalizations.of(context).getTranslate("shoes"),
+                        "175"),
                   ],
                 ),
               ),

@@ -16,15 +16,15 @@ class _WelcomePageState extends State<WelcomePage> {
 
   final boardingData = [
     {
-      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356877.png",
-      "title" : "NEW WINTER 2024 COLLECTION IS OUT!"
+      "image": "https://cdn-icons-png.flaticon.com/256/7356/7356877.png",
+      "title": "NEW WINTER 2024 COLLECTION IS OUT!",
     },
     {
-      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356885.png",
+      "image": "https://cdn-icons-png.flaticon.com/256/7356/7356885.png",
       "title": "TRY OUR SUMMER 2023 OUTLET COLLECTION NOW!"
     },
     {
-      "image" : "https://cdn-icons-png.flaticon.com/256/7356/7356883.png",
+      "image": "https://cdn-icons-png.flaticon.com/256/7356/7356883.png",
       "title": "LOREM IPSUM DOLAR SIT AMET!!"
     },
   ];
@@ -44,25 +44,25 @@ class _WelcomePageState extends State<WelcomePage> {
                 // ignore: use_build_context_synchronously
                 GoRouter.of(context).replace("/signin");
               },
-              child: page == 2 ? const Text("Done") : const Text("Skip"),
+              child: page == 2
+                  ? const Text("Done")
+                  : const Text("Skip"),
             ),
           )
         ],
       ),
       body: SafeArea(
-        child: PreloadPageView.builder(
-          onPageChanged: (value) {
-            setState(() {
-              page = value;
-            });
-          },
-          itemCount: boardingData.length,
-          itemBuilder: (context, index) => BoardingItem(
+          child: PreloadPageView.builder(
+        onPageChanged: (value) {
+          setState(() {
+            page = value;
+          });
+        },
+        itemCount: boardingData.length,
+        itemBuilder: (context, index) => BoardingItem(
             image: boardingData[index]["image"]!,
-            title: boardingData[index]["title"]!
-            ),
-        )
-      ),
+            title: boardingData[index]["title"]!),
+      )),
       bottomNavigationBar: SizedBox(
         height: 70,
         child: Row(

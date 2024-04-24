@@ -3,9 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:midterm_project/Screens/client/sign_in.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key});
+import '../core/localizations.dart';
 
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
+
+  @override
+  _SignUpPageState createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController phonenumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -21,23 +28,21 @@ class SignUpPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Create an Account",
-                style: TextStyle(
+              Text(AppLocalizations.of(context).getTranslate("create_account"),
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                 ),
               ),
               const SizedBox(height: 20),
-              buildTextField("Username", usernameController, "arda_sargin"),
+              buildTextField(AppLocalizations.of(context).getTranslate("username"), usernameController, "arda_sargin"),
               const SizedBox(height: 20),
-              buildTextField(
-                  "Phone Number", phonenumberController, "+905426557725"),
+              buildTextField(AppLocalizations.of(context).getTranslate("phone"), phonenumberController, "+905426557725"),
               const SizedBox(height: 20),
-              buildTextField("E-Mail", emailController, "arda@gmail.com"),
+              buildTextField(AppLocalizations.of(context).getTranslate("mail"), emailController, "arda@gmail.com"),
               const SizedBox(height: 20),
-              buildTextField("Password", passwordController, "*******",
+              buildTextField(AppLocalizations.of(context).getTranslate("password"), passwordController, "*********",
                   obscureText: true),
             ],
           ),
@@ -57,9 +62,8 @@ class SignUpPage extends StatelessWidget {
                     onTap: () {
                       GoRouter.of(context).push("/signin");
                     },
-                    child: const Text(
-                      "Log In",
-                      style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate("login"),
+                      style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -68,59 +72,58 @@ class SignUpPage extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () async {
-                      bool success = await saveUserCredentials(
-                        usernameController.text,
-                        phonenumberController.text,
-                        emailController.text,
-                        passwordController.text,
-                      );
+                      if (_validateForm()) {
+                        bool success = await saveUserCredentials(
+                          usernameController.text,
+                          phonenumberController.text,
+                          emailController.text,
+                          passwordController.text,
+                        );
 
-                      if (success) {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Success'),
-                              content: const Text(
-                                'Sign Up Success',
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    //Navigator.of(context).pop();
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SignInPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text('OK'),
+                        if (success) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(AppLocalizations.of(context).getTranslate("success")),
+                                content: Text(AppLocalizations.of(context).getTranslate("signup_success"),
                                 ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Error'),
-                              content: const Text(
-                                'Failed to sign up. Please check your information.',
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('OK'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignInPage(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(AppLocalizations.of(context).getTranslate("ok")),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(AppLocalizations.of(context).getTranslate("error")),
+                                content: Text(AppLocalizations.of(context).getTranslate("failed"),
                                 ),
-                              ],
-                            );
-                          },
-                        );
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(AppLocalizations.of(context).getTranslate("ok")),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       }
                     },
                     icon: const Icon(Icons.arrow_circle_right),
@@ -172,6 +175,46 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  bool _validateForm() {
+    if (usernameController.text.isEmpty ||
+        phonenumberController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
+      _showErrorMessage(AppLocalizations.of(context).getTranslate("required"));
+      return false;
+    } else if (!emailController.text.contains('@')) {
+      _showErrorMessage(AppLocalizations.of(context).getTranslate("invalid_mail"));
+      return false;
+    } else if (!phonenumberController.text.contains('+90')) {
+      _showErrorMessage(AppLocalizations.of(context).getTranslate("invalid_phone"));
+      return false;
+    } else if (passwordController.text.length < 9) {
+      _showErrorMessage(AppLocalizations.of(context).getTranslate("password_characters"));
+      return false;
+    }
+    return true;
+  }
+
+  void _showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context).getTranslate("error")),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(AppLocalizations.of(context).getTranslate("ok")),
+            ),
+          ],
+        );
+      },
     );
   }
 

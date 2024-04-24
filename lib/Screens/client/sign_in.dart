@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../core/localizations.dart';
 import '../product/home.dart';
 
 class SignInPage extends StatefulWidget {
@@ -25,18 +26,18 @@ class _SignInPageState extends State<SignInPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Sign In",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).getTranslate("signin"),
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                 ),
               ),
               const SizedBox(height: 40),
-              const Text(
-                "E-Mail",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).getTranslate("mail"),
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -63,9 +64,9 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Password",
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).getTranslate("password"),
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -81,7 +82,7 @@ class _SignInPageState extends State<SignInPage> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: const Color.fromARGB(255, 250, 248, 248),
-                    hintText: '******',
+                    hintText: '********',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: BorderSide.none,
@@ -98,9 +99,8 @@ class _SignInPageState extends State<SignInPage> {
                   onTap: () {
                     GoRouter.of(context).push("/resetpassword");
                   },
-                  child: const Text(
-                    "Forgot Password?",
-                    style: TextStyle(
+                  child: Text(AppLocalizations.of(context).getTranslate("forgot_password"),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                     ),
@@ -125,9 +125,8 @@ class _SignInPageState extends State<SignInPage> {
                     onTap: () {
                       GoRouter.of(context).push("/signup");
                     },
-                    child: const Text(
-                      "Sign Up",
-                      style: TextStyle(
+                    child: Text(AppLocalizations.of(context).getTranslate("signup"),
+                      style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -151,15 +150,15 @@ class _SignInPageState extends State<SignInPage> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: const Text('Error'),
+                              title: Text(AppLocalizations.of(context).getTranslate("error")),
                               content:
-                                  const Text('Invalid username or password.'),
+                                  Text(AppLocalizations.of(context).getTranslate("invalid_username_password")),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(AppLocalizations.of(context).getTranslate("ok")),
                                 ),
                               ],
                             );
