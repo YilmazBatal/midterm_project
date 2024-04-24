@@ -5,7 +5,7 @@ class Storage {
     final SharedPreferences storage = await SharedPreferences.getInstance();
 
     final launched = storage.getBool("launched");
-    
+
     var counter = storage.getInt("launchCount");
 
     if (launched == null) {
@@ -18,7 +18,7 @@ class Storage {
       return false;
     }
   }
-  
+
   firstLaunched() async {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.setBool("launched", true);
@@ -27,5 +27,26 @@ class Storage {
   storageClear() async {
     final SharedPreferences storage = await SharedPreferences.getInstance();
     await storage.clear();
+  }
+
+  setConfig({String? language, bool? darkMode}) async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+
+    if (language != null) {
+      await storage.setString("language", language);
+    }
+
+    if (darkMode != null) {
+      await storage.setBool("darkMode", darkMode);
+    }
+  }
+
+  getConfig() async {
+    final SharedPreferences storage = await SharedPreferences.getInstance();
+
+    return {
+      "language": storage.getString("language"),
+      "darkMode": storage.getBool("darkMode"),
+    };
   }
 }

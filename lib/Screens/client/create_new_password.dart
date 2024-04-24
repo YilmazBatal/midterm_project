@@ -18,14 +18,16 @@ class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).getTranslate("create_new_password")),
+        title: Text(
+            AppLocalizations.of(context).getTranslate("create_new_password")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(AppLocalizations.of(context).getTranslate("create_new_password"),
+            Text(
+              AppLocalizations.of(context).getTranslate("create_new_password"),
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -35,13 +37,15 @@ class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
             const SizedBox(height: 10),
             Text(AppLocalizations.of(context).getTranslate("enter_new_pass")),
             const SizedBox(height: 40),
-            buildTextField(AppLocalizations.of(context).getTranslate("new_password"),
+            buildTextField(
+              AppLocalizations.of(context).getTranslate("new_password"),
               newPasswordController,
               AppLocalizations.of(context).getTranslate("enter_new_pass"),
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            buildTextField(AppLocalizations.of(context).getTranslate("confirm_password"),
+            buildTextField(
+              AppLocalizations.of(context).getTranslate("confirm_password"),
               confirmPasswordController,
               AppLocalizations.of(context).getTranslate("confirm_new_pass"),
               obscureText: true,
@@ -125,17 +129,23 @@ class _CreateNewPasswordPageState extends State<CreateNewPasswordPage> {
 
         // Şifre oluşturma işlemi başarılı olursa kullanıcıya mesaj göster
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context).getTranslate("set_new_pass"))),
+          SnackBar(
+              content: Text(
+                  AppLocalizations.of(context).getTranslate("set_new_pass"))),
         );
         Navigator.of(context).pushNamed('/login');
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text(AppLocalizations.of(context).getTranslate("error_pass"))),
+          SnackBar(
+              content: Text(
+                  AppLocalizations.of(context).getTranslate("error_pass"))),
         );
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context).getTranslate("set_new_pass"))),
+        SnackBar(
+            content: Text(
+                AppLocalizations.of(context).getTranslate("set_new_pass"))),
       );
     }
   }

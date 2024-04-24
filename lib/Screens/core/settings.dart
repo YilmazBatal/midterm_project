@@ -14,8 +14,9 @@ class SettingsPage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(AppLocalizations.of(context)
-                            .getTranslate("settings"),),
+            title: Text(
+              AppLocalizations.of(context).getTranslate("settings"),
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -23,8 +24,7 @@ class SettingsPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context)
-                            .getTranslate("language"),
+                  AppLocalizations.of(context).getTranslate("language"),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -58,16 +58,15 @@ class SettingsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  AppLocalizations.of(context)
-                            .getTranslate("theme"),
+                  AppLocalizations.of(context).getTranslate("theme"),
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SwitchListTile(
-                  title: Text(AppLocalizations.of(context)
-                            .getTranslate("dark_mode")),
+                  title: Text(
+                      AppLocalizations.of(context).getTranslate("dark_mode")),
                   value: state.darkMode,
                   onChanged: (bool value) {
                     context.read<ClientCubit>().changeDarkMode(darkMode: value);

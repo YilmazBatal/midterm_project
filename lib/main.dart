@@ -7,6 +7,8 @@ import 'package:midterm_project/bloc/client/client_cubit.dart';
 import 'package:midterm_project/bloc/client/client_state.dart';
 import 'package:midterm_project/Screens/core/localizations.dart';
 
+import 'Screens/core/themes.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -34,11 +36,9 @@ class MainApp extends StatelessWidget {
               Locale('en', 'US'),
               Locale('tr', 'TR'),
             ],
-            theme: ThemeData(
-              textTheme: GoogleFonts.montserratTextTheme(
-                Theme.of(context).textTheme,
-              ),
-            ),
+            themeMode: state.darkMode ? ThemeMode.dark : ThemeMode.light,
+            theme: lightTheme,
+            darkTheme: darkTheme,
             locale: Locale(state.language),
           );
         },
