@@ -40,6 +40,7 @@ class AddressPage extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 30,),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
