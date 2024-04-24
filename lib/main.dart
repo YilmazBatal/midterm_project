@@ -11,14 +11,20 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'Screens/core/themes.dart';
 
-void main() {
+void main() async {
+  // Notification
+  WidgetsFlutterBinding.ensureInitialized();
+  await Permission.notification.isDenied.then((value) {
+    if (value) {
+      Permission.notification.request();
+    }
+  });
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
-
-  
 
   @override
   Widget build(BuildContext context) {
