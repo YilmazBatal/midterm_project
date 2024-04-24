@@ -22,13 +22,13 @@ class _HomePageState extends State<HomePage> {
     },
     {
       "image":
-          "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+          "https://static.vecteezy.com/system/resources/thumbnails/020/294/027/small_2x/empty-yellow-t-shirt-template-free-vector.jpg",
       "title": "T-shirt",
       "price": "9.99",
     },
     {
       "image":
-          "https://www.teokimya.com/wp-content/uploads/2019/06/tshirt-2.jpg",
+          "https://media.istockphoto.com/id/1318878952/vector/vector-realistic-t-shirt.jpg?s=612x612&w=0&k=20&c=uMO9WZk27CgfGvfM177p0j7WwxD0cnR_N3cAmMsYaeE=",
       "title": "T-shirt ",
       "price": "9.99",
     },
@@ -144,20 +144,18 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   width: 280,
                   height: 50,
-                  child: Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color.fromARGB(255, 250, 248, 248),
-                        hintText: 'Arama yapın...',
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide.none,
-                        ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color.fromARGB(255, 250, 248, 248),
+                      hintText: 'Arama yapın...',
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -195,7 +193,7 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Köşe yarıçapı
                 child: Image.network(
-                  "https://cdn2.enuygun.com/media/lib/825x620/uploads/image/galata-kulesi-14934.webp",
+                  "https://png.pngtree.com/png-clipart/20220117/original/pngtree-big-sale-up-to-70-off-black-friday-social-media-banner-png-image_7129084.png",
                   fit: BoxFit.cover,
                 ),
               ),
