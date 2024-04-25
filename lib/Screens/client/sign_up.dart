@@ -28,7 +28,8 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppLocalizations.of(context).getTranslate("create_account"),
+              Text(
+                AppLocalizations.of(context).getTranslate("create_account"),
                 style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -36,13 +37,21 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              buildTextField(AppLocalizations.of(context).getTranslate("username"), usernameController, "arda_sargin"),
+              buildTextField(
+                  AppLocalizations.of(context).getTranslate("username"),
+                  usernameController,
+                  "arda_sargin"),
               const SizedBox(height: 20),
-              buildTextField(AppLocalizations.of(context).getTranslate("phone"), phonenumberController, "+905426557725"),
+              buildTextField(AppLocalizations.of(context).getTranslate("phone"),
+                  phonenumberController, "+905426557725"),
               const SizedBox(height: 20),
-              buildTextField(AppLocalizations.of(context).getTranslate("mail"), emailController, "arda@gmail.com"),
+              buildTextField(AppLocalizations.of(context).getTranslate("mail"),
+                  emailController, "arda@gmail.com"),
               const SizedBox(height: 20),
-              buildTextField(AppLocalizations.of(context).getTranslate("password"), passwordController, "*********",
+              buildTextField(
+                  AppLocalizations.of(context).getTranslate("password"),
+                  passwordController,
+                  "*********",
                   obscureText: true),
             ],
           ),
@@ -62,7 +71,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     onTap: () {
                       GoRouter.of(context).push("/signin");
                     },
-                    child: Text(AppLocalizations.of(context).getTranslate("login"),
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate("login"),
                       style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
@@ -85,8 +95,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text(AppLocalizations.of(context).getTranslate("success")),
-                                content: Text(AppLocalizations.of(context).getTranslate("signup_success"),
+                                title: Text(AppLocalizations.of(context)
+                                    .getTranslate("success")),
+                                content: Text(
+                                  AppLocalizations.of(context)
+                                      .getTranslate("signup_success"),
                                 ),
                                 actions: <Widget>[
                                   TextButton(
@@ -98,7 +111,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                         ),
                                       );
                                     },
-                                    child: Text(AppLocalizations.of(context).getTranslate("ok")),
+                                    child: Text(AppLocalizations.of(context)
+                                        .getTranslate("ok")),
                                   ),
                                 ],
                               );
@@ -109,15 +123,19 @@ class _SignUpPageState extends State<SignUpPage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text(AppLocalizations.of(context).getTranslate("error")),
-                                content: Text(AppLocalizations.of(context).getTranslate("failed"),
+                                title: Text(AppLocalizations.of(context)
+                                    .getTranslate("error")),
+                                content: Text(
+                                  AppLocalizations.of(context)
+                                      .getTranslate("failed"),
                                 ),
                                 actions: <Widget>[
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text(AppLocalizations.of(context).getTranslate("ok")),
+                                    child: Text(AppLocalizations.of(context)
+                                        .getTranslate("ok")),
                                   ),
                                 ],
                               );
@@ -186,13 +204,16 @@ class _SignUpPageState extends State<SignUpPage> {
       _showErrorMessage(AppLocalizations.of(context).getTranslate("required"));
       return false;
     } else if (!emailController.text.contains('@')) {
-      _showErrorMessage(AppLocalizations.of(context).getTranslate("invalid_mail"));
+      _showErrorMessage(
+          AppLocalizations.of(context).getTranslate("invalid_mail"));
       return false;
     } else if (!phonenumberController.text.contains('+90')) {
-      _showErrorMessage(AppLocalizations.of(context).getTranslate("invalid_phone"));
+      _showErrorMessage(
+          AppLocalizations.of(context).getTranslate("invalid_phone"));
       return false;
-    } else if (passwordController.text.length < 9) {
-      _showErrorMessage(AppLocalizations.of(context).getTranslate("password_characters"));
+    } else if (passwordController.text.length < 8) {
+      _showErrorMessage(
+          AppLocalizations.of(context).getTranslate("password_characters"));
       return false;
     }
     return true;

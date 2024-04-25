@@ -13,8 +13,9 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
-                  controller: usernameController,
+                  controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: const Color.fromARGB(255, 250, 248, 248),
@@ -99,7 +100,9 @@ class _SignInPageState extends State<SignInPage> {
                   onTap: () {
                     GoRouter.of(context).push("/resetpassword");
                   },
-                  child: Text(AppLocalizations.of(context).getTranslate("forgot_password"),
+                  child: Text(
+                    AppLocalizations.of(context)
+                        .getTranslate("forgot_password"),
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
@@ -125,7 +128,8 @@ class _SignInPageState extends State<SignInPage> {
                     onTap: () {
                       GoRouter.of(context).push("/signup");
                     },
-                    child: Text(AppLocalizations.of(context).getTranslate("signup"),
+                    child: Text(
+                      AppLocalizations.of(context).getTranslate("signup"),
                       style: const TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
@@ -136,10 +140,10 @@ class _SignInPageState extends State<SignInPage> {
                   IconButton(
                     onPressed: () async {
                       bool success = await authenticateUser(
-                        usernameController.text,
+                        emailController.text,
                         passwordController.text,
+                        usernameController.text,
                       );
-
                       if (success) {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const HomePage()));
@@ -150,15 +154,17 @@ class _SignInPageState extends State<SignInPage> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text(AppLocalizations.of(context).getTranslate("error")),
-                              content:
-                                  Text(AppLocalizations.of(context).getTranslate("invalid_username_password")),
+                              title: Text(AppLocalizations.of(context)
+                                  .getTranslate("error")),
+                              content: Text(AppLocalizations.of(context)
+                                  .getTranslate("invalid_username_password")),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text(AppLocalizations.of(context).getTranslate("ok")),
+                                  child: Text(AppLocalizations.of(context)
+                                      .getTranslate("ok")),
                                 ),
                               ],
                             );
@@ -180,14 +186,18 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   // Kullanıcıyı doğrula
-  Future<bool> authenticateUser(String email, String password) async {
+  Future<bool> authenticateUser(
+      String email, String password, String username) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? storedUsername = prefs.getString('email');
+      String? storedEmail = prefs.getString('email');
       String? storedPassword = prefs.getString('password');
-      debugPrint("name$email");
-      debugPrint("pass$password");
-      return storedUsername == email && storedPassword == password;
+      String? username = prefs.getString('username');
+      debugPrint("usermail $email");
+      debugPrint("pass $password");
+      debugPrint("storedUsername $username");
+
+      return storedEmail == email && storedPassword == password;
     } catch (e) {
       // ignore: avoid_print
       print('Failed to authenticate user: $e');

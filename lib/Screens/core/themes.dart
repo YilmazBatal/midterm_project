@@ -4,6 +4,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 final lightTheme = FlexThemeData.light(
   colors: const FlexSchemeColor(
+    // Light theme color scheme
     primary: Color(0xff1695d8),
     primaryContainer: Color(0xffd0e4ff),
     secondary: Color(0xffac3306),
@@ -16,6 +17,7 @@ final lightTheme = FlexThemeData.light(
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 7,
   subThemesData: const FlexSubThemesData(
+    // Light theme sub-theme data
     blendOnLevel: 10,
     blendOnColors: false,
     useTextTheme: true,
@@ -44,6 +46,7 @@ final lightTheme = FlexThemeData.light(
 
 final darkTheme = FlexThemeData.dark(
   colors: const FlexSchemeColor(
+    // Dark theme color scheme
     primary: Color(0xff9fc9ff),
     primaryContainer: Color(0xff00325b),
     secondary: Color(0xffffb59d),
@@ -56,6 +59,7 @@ final darkTheme = FlexThemeData.dark(
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 13,
   subThemesData: const FlexSubThemesData(
+    // Dark theme sub-theme data
     blendOnLevel: 20,
     useTextTheme: true,
     useM2StyleDividerInM3: true,

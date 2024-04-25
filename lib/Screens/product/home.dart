@@ -13,6 +13,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? storedUsername;
+
+  @override
+  void initState() {
+    super.initState();
+    loadUsername();
+  }
+
+  Future<void> loadUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      storedUsername = prefs.getString('username');
+    });
+  }
+
   // ignore: unused_field
   final _productsList = [
     {
@@ -135,10 +150,10 @@ class _HomePageState extends State<HomePage> {
                   textAlign: TextAlign.start,
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  "<NAME>",
-                  style: TextStyle(fontSize: 30),
-                  textAlign: TextAlign.start,
+                Text(
+                  textAlign: TextAlign.left,
+                  storedUsername != null ? "$storedUsername" : "<User>",
+                  style: const TextStyle(fontSize: 30, color: Colors.black),
                 ),
               ],
             ),
