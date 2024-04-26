@@ -30,7 +30,7 @@ class _BottomMenuState extends State<BottomMenu> {
           GoRouter.of(context).push("/previousorders");
           break;
         case 3:
-          GoRouter.of(context).push("/settings");
+          GoRouter.of(context).push("/favorites");
           break;
         default:
       }
